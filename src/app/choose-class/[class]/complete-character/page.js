@@ -1,8 +1,9 @@
-import BarbarianDetails from "@/components/ClassDetails/BarbarianDetails";
 import SignUpHeader from "@/components/SignUpHeader/SignUpHeader";
 import styles from "@/app/choose-class/choose-class.module.css";
-import PaladinDetails from "@/components/ClassDetails/PaladinDetails";
-import RogueDetails from "@/components/ClassDetails/RogueDetails";
+
+import BarbarianChoice from "@/components/ClassDetails/BarbarianChoice";
+import RogueChoice from "@/components/ClassDetails/RogueChoice";
+import PaladinChoice from "@/components/ClassDetails/PaladinChoice";
 
 export default async function CompleteCharacter({ params }) {
   const classChoice = await params;
@@ -25,17 +26,17 @@ export default async function CompleteCharacter({ params }) {
             {classChoice.class === "1" ? (
               <>
                 {" "}
-                <BarbarianDetails styles={styles} />
+                <BarbarianChoice styles={styles} />
               </>
             ) : classChoice.class === "2" ? (
               <>
                 {" "}
-                <RogueDetails styles={styles} />
+                <RogueChoice styles={styles} />
               </>
             ) : classChoice.class === "3" ? (
               <>
                 {" "}
-                <PaladinDetails styles={styles} />
+                <PaladinChoice styles={styles} />
               </>
             ) : null}
           </div>

@@ -30,31 +30,19 @@ export default function BarbarianDetails({ styles }) {
           <div className={styles.showcase_stat}>
             <span>Strength</span>
             <div className={styles.showcase_bar_bg}>
-              <div
-                className={styles.showcase_bar}
-                // barbarian-gradient}
-                // style={{ width: "95%" }}
-              />
+              <div className={`${styles.barbarian_gradient} w-9/10`} />
             </div>
           </div>
           <div className={styles.showcase_stat}>
             <span>Stamina</span>
             <div className={styles.showcase_bar_bg}>
-              <div
-                className={styles.showcase_bar}
-                //  barbarian-gradient
-                // style={{ width: "60%" }}
-              />
+              <div className={`${styles.barbarian_gradient} w-6/10`} />
             </div>
           </div>
           <div className={styles.showcase_stat}>
             <span>Agility</span>
             <div className={styles.showcase_bar_bg}>
-              <div
-                className={styles.showcase_bar}
-                // styles.barbarian-gradient
-                // style={{ width: "40%" }}
-              />
+              <div className={`${styles.barbarian_gradient} w-4/10`} />
             </div>
           </div>
         </div>

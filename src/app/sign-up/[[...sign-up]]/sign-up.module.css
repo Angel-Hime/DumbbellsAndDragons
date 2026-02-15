@@ -5,6 +5,12 @@
   color: white;
 }
 
+.hero_section {
+  position: relative;
+  padding: 3rem 1rem 3rem;
+  overflow: hidden;
+}
+
 .hero_container {
   max-width: 1280px;
   margin: 0 auto;

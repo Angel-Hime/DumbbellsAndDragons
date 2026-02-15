@@ -79,6 +79,13 @@
 /* Class Details mockups*/
 .class_details_showcase {
   padding: 2rem;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+  transition: border-color 0.3s;
 }
 
 .class_showcase_header {
@@ -151,21 +158,22 @@
   overflow: hidden;
 }
 
-.showcase_bar {
-  height: 100%;
-  border-radius: 9999px;
-}
-
 /* change --------------------------------------------* */
 .barbarian_gradient {
+  height: 100%;
+  border-radius: 9999px;
   background: linear-gradient(to right, #10b981, #059669);
 }
 
 .rogue_gradient {
+  height: 100%;
+  border-radius: 9999px;
   background: linear-gradient(to right, #a855f7, #6366f1);
 }
 
 .paladin_gradient {
+  height: 100%;
+  border-radius: 9999px;
   background: linear-gradient(to right, #3b82f6, #06b6d4);
 }
 
@@ -177,7 +185,7 @@
 .btn_primary {
   align-self: flex-end;
   width: 10em;
-  margin: 1rem;
+  margin: 1rem 0;
   padding: 0.5rem 2rem;
   background: linear-gradient(to right, #10b981, #059669);
   border: none;
@@ -189,7 +197,7 @@
   transition: all 0.3s;
   display: flex;
   flex-direction: row;
-  gap: 1em;
+  gap: 1.5em;
   &:hover {
     background: linear-gradient(to left, #16bb84, #059669);
   }

@@ -28,7 +28,7 @@ export default async function ChooseClass({ params, searchParams }) {
             {/* Class Cards - Static for now we can add modals later or pages /about ... something to discuss */}
             <div className={styles.class_selector}>
               <Link
-                href={`/choose-class?class=1`}
+                href={`/choose-class?class=1#classDetails`}
                 className={styles.class_card}
               >
                 <div className={styles.class_icon}>🪓</div>
@@ -40,7 +40,7 @@ export default async function ChooseClass({ params, searchParams }) {
               </Link>
 
               <Link
-                href={`/choose-class?class=2`}
+                href={`/choose-class?class=2#classDetails`}
                 className={styles.class_card}
               >
                 <div className={styles.class_icon}>⚔️</div>
@@ -52,7 +52,7 @@ export default async function ChooseClass({ params, searchParams }) {
               </Link>
 
               <Link
-                href={`/choose-class?class=3`}
+                href={`/choose-class?class=3#classDetails`}
                 className={styles.class_card}
               >
                 <div className={styles.class_icon}>🗡️🛡️</div>
@@ -66,7 +66,7 @@ export default async function ChooseClass({ params, searchParams }) {
 
             {/* Example Class Details mock up  */}
             {classChoice.class === "1" ? (
-              <>
+              <div id="classDetails" className="flex flex-col">
                 {" "}
                 <BarbarianDetails styles={styles} />
                 <Link
@@ -81,14 +81,14 @@ export default async function ChooseClass({ params, searchParams }) {
                       stroke="currentColor"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       d="m7.25 5-3.5-2.25v4.5L7.25 5Z"
                     ></path>
                   </svg>
                 </Link>
-              </>
+              </div>
             ) : classChoice.class === "2" ? (
-              <>
+              <div id="classDetails" className="flex flex-col">
                 {" "}
                 <RogueDetails styles={styles} />
                 <Link
@@ -103,14 +103,14 @@ export default async function ChooseClass({ params, searchParams }) {
                       stroke="currentColor"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       d="m7.25 5-3.5-2.25v4.5L7.25 5Z"
                     ></path>
                   </svg>
                 </Link>
-              </>
+              </div>
             ) : classChoice.class === "3" ? (
-              <>
+              <div id="classDetails" className="flex flex-col">
                 {" "}
                 <PaladinDetails styles={styles} />
                 <Link
@@ -125,12 +125,12 @@ export default async function ChooseClass({ params, searchParams }) {
                       stroke="currentColor"
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      stroke-width="1.5"
+                      strokeWidth="1.5"
                       d="m7.25 5-3.5-2.25v4.5L7.25 5Z"
                     ></path>
                   </svg>
                 </Link>
-              </>
+              </div>
             ) : null}
           </div>
         </section>
