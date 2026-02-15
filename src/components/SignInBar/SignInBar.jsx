@@ -15,8 +15,12 @@ export default function SignInBar() {
 
           {/* These will be clerk auth sign in/ sign up buttons*/}
           <div className="navbar-auth">
-            <SignInButton />
-            <SignUpButton />
+            <SignInButton>
+              <button className="btn-login">Sign In</button>
+            </SignInButton>
+            <SignUpButton>
+              <button className="btn-signup">Sign Up</button>
+            </SignUpButton>
           </div>
         </div>
       </div>
