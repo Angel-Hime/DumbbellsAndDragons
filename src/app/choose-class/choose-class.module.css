@@ -1,21 +1,20 @@
 /* P Wrapper */
 .page_wrapper {
-  max-width: window;
   min-height: 100vh;
+  min-width: 100vw;
   background: linear-gradient(to bottom, #0a0e14, #0f172a, #0a0e14);
   color: white;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5vh;
 }
 
 .section {
   padding: 5rem;
 }
+
 .container {
-  max-width: 100vw;
+  width: 90%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 .section_header {
   text-align: center;
@@ -35,13 +34,18 @@
 
 /* Class=====================selector */
 .class_selector {
-  display: grid;
-  grid-template-columns: 1fr;
+  width: 100%;
+  place-self: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 1.5rem;
   margin-bottom: 3rem;
 }
 
 .class_card {
+  width: 25vw;
+  cursor: pointer;
   padding: 2rem;
   text-align: center;
   background: rgba(30, 41, 59, 0.5);
@@ -168,5 +172,25 @@
 @media (max-width: 768px) {
   .section_title {
     font-size: 2rem;
+  }
+}
+.btn_primary {
+  align-self: flex-end;
+  width: 10em;
+  margin: 1rem;
+  padding: 0.5rem 2rem;
+  background: linear-gradient(to right, #10b981, #059669);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  &:hover {
+    background: linear-gradient(to left, #16bb84, #059669);
   }
 }

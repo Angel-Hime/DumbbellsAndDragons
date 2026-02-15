@@ -3,15 +3,6 @@
   min-height: 100vh;
   background: linear-gradient(to bottom, #0a0e14, #0f172a, #0a0e14);
   color: white;
-  display: flex;
-  flex-direction: column;
-  gap: 5vh;
-}
-
-.signUp {
-  align-self: center;
-  justify-self: center;
-  width: fit-content;
 }
 
 .hero_container {
@@ -72,8 +63,7 @@
   cursor: pointer;
   transition: all 0.3s;
   display: inline-block;
-}
-
-.btn_primary:hover {
-  box-shadow: 0 25px 50px -12px rgba(248, 244, 19, 0.819);
+  &:hover {
+    background: linear-gradient(to left, #16bb84, #059669);
+  }
 }

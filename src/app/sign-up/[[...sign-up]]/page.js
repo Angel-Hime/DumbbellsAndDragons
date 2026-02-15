@@ -2,13 +2,11 @@ import { SignUp } from "@clerk/nextjs";
 import styles from "./sign-up.module.css";
 import SignUpHeader from "@/components/SignUpHeader/SignUpHeader";
 
-export default async function signUpPage({ searchParams }) {
-  const sP = await searchParams;
-
+export default async function signUpPage() {
   return (
     <>
       <section className={styles.page_wrapper}>
-        <SignUpHeader sP={sP} />
+        <SignUpHeader />
         <section className={styles.hero_section}>
           <div className={styles.hero_background}>
             <div className={`${styles.gradient_blob} mt-2 ml-2 bg-black`} />
@@ -31,13 +29,12 @@ export default async function signUpPage({ searchParams }) {
               </p>
               <div className={styles.hero_description}>Start Your Quest!</div>
             </div>
-            <div className={styles.signUp}>
-              <SignUp
-                appearance={{
-                  elements: { formButtonPrimary: styles.btn_primary },
-                }}
-              />
-            </div>
+
+            <SignUp
+              appearance={{
+                elements: { formButtonPrimary: styles.btn_primary },
+              }}
+            />
           </div>
         </section>
       </section>

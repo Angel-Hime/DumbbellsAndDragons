@@ -1,6 +1,8 @@
 import BarbarianDetails from "@/components/ClassDetails/BarbarianDetails";
 import SignUpHeader from "@/components/SignUpHeader/SignUpHeader";
 import styles from "@/app/choose-class/choose-class.module.css";
+import PaladinDetails from "@/components/ClassDetails/PaladinDetails";
+import RogueDetails from "@/components/ClassDetails/RogueDetails";
 
 export default async function CompleteCharacter({ params }) {
   const classChoice = await params;
@@ -21,7 +23,20 @@ export default async function CompleteCharacter({ params }) {
 
             {/* Example Class Details mock up  */}
             {classChoice.class === "1" ? (
-              <BarbarianDetails styles={styles} />
+              <>
+                {" "}
+                <BarbarianDetails styles={styles} />
+              </>
+            ) : classChoice.class === "2" ? (
+              <>
+                {" "}
+                <RogueDetails styles={styles} />
+              </>
+            ) : classChoice.class === "3" ? (
+              <>
+                {" "}
+                <PaladinDetails styles={styles} />
+              </>
             ) : null}
           </div>
         </section>

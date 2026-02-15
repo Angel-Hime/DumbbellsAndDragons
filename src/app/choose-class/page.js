@@ -1,17 +1,20 @@
 import BarbarianDetails from "@/components/ClassDetails/BarbarianDetails";
 import SignUpHeader from "@/components/SignUpHeader/SignUpHeader";
 import styles from "./choose-class.module.css";
+import Link from "next/link";
+import RogueDetails from "@/components/ClassDetails/RogueDetails";
+import PaladinDetails from "@/components/ClassDetails/PaladinDetails";
 
 export default async function ChooseClass({ params, searchParams }) {
   const classChoice = await searchParams;
-  const page = await params;
+  console.log(classChoice);
 
   // I need to set a variable which will be used the link for the continue button
 
   return (
     <>
       <div className={styles.page_wrapper}>
-        <SignUpHeader page={page} />
+        <SignUpHeader />
 
         <section className={styles.section}>
           <div className={styles.container}>
@@ -24,36 +27,110 @@ export default async function ChooseClass({ params, searchParams }) {
 
             {/* Class Cards - Static for now we can add modals later or pages /about ... something to discuss */}
             <div className={styles.class_selector}>
-              <div className={styles.class_card}>
+              <Link
+                href={`/choose-class?class=1`}
+                className={styles.class_card}
+              >
                 <div className={styles.class_icon}>🪓</div>
                 <h3 className={styles.class_name}>Barbarian</h3>
                 <p className={styles.class_tagline}>Master of Raw Strength</p>
                 <p className={styles.class_description}>
                   Dominate with heavy compound lifts and progressive overload
                 </p>
-              </div>
+              </Link>
 
-              <div className={styles.class_card}>
+              <Link
+                href={`/choose-class?class=2`}
+                className={styles.class_card}
+              >
                 <div className={styles.class_icon}>⚔️</div>
                 <h3 className={styles.class_name}>Rogue</h3>
                 <p className={styles.class_tagline}>Agility & Control</p>
                 <p className={styles.class_description}>
                   Master bodyweight movements and calisthenics
                 </p>
-              </div>
+              </Link>
 
-              <div className={styles.class_card}>
+              <Link
+                href={`/choose-class?class=3`}
+                className={styles.class_card}
+              >
                 <div className={styles.class_icon}>🗡️🛡️</div>
                 <h3 className={styles.class_name}>Paladin</h3>
                 <p className={styles.class_tagline}>Balanced Warrior</p>
                 <p className={styles.class_description}>
                   Combine strength training with endurance work
                 </p>
-              </div>
+              </Link>
             </div>
+
             {/* Example Class Details mock up  */}
-            {classChoice === "barbarian" ? (
-              <BarbarianDetails styles={styles} />
+            {classChoice.class === "1" ? (
+              <>
+                {" "}
+                <BarbarianDetails styles={styles} />
+                <Link
+                  href={`/choose-class/${classChoice?.class}/complete-character`}
+                  className={styles.btn_primary}
+                >
+                  Continue{" "}
+                  <svg className="cl-buttonArrowIcon self-center h-2">
+                    <path
+                      className="self-center"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      stroke-width="1.5"
+                      d="m7.25 5-3.5-2.25v4.5L7.25 5Z"
+                    ></path>
+                  </svg>
+                </Link>
+              </>
+            ) : classChoice.class === "2" ? (
+              <>
+                {" "}
+                <RogueDetails styles={styles} />
+                <Link
+                  href={`/choose-class/${classChoice?.class}/complete-character`}
+                  className={styles.btn_primary}
+                >
+                  Continue{" "}
+                  <svg className="cl-buttonArrowIcon self-center h-2">
+                    <path
+                      className="self-center"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      stroke-width="1.5"
+                      d="m7.25 5-3.5-2.25v4.5L7.25 5Z"
+                    ></path>
+                  </svg>
+                </Link>
+              </>
+            ) : classChoice.class === "3" ? (
+              <>
+                {" "}
+                <PaladinDetails styles={styles} />
+                <Link
+                  href={`/choose-class/${classChoice?.class}/complete-character`}
+                  className={styles.btn_primary}
+                >
+                  Continue{" "}
+                  <svg className="cl-buttonArrowIcon self-center h-2">
+                    <path
+                      className="self-center"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      stroke-width="1.5"
+                      d="m7.25 5-3.5-2.25v4.5L7.25 5Z"
+                    ></path>
+                  </svg>
+                </Link>
+              </>
             ) : null}
           </div>
         </section>
