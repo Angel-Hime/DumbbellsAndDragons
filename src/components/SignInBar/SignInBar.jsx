@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import './signinbar.css';
+import Link from "next/link";
+import "./signinbar.css";
 
 export default function SignInBar() {
   return (
@@ -14,10 +14,10 @@ export default function SignInBar() {
 
           {/* These will be clerk auth sign in/ sign up buttons*/}
           <div className="navbar-auth">
-            <Link href="/login" className="btn-login">
-              Log In
+            <Link href="/sign-in" className="btn-sign-in">
+              Sign In
             </Link>
-            <Link href="/signup" className="btn-signup">
+            <Link href="/sign-up" className="btn-sign-up">
               Sign Up
             </Link>
           </div>
