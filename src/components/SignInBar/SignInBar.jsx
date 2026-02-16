@@ -12,7 +12,6 @@ export default function SignInBar() {
             <span className="logo-text">Dumbbells & Dragons</span>
           </Link>
 
-          {/* These will be clerk auth sign in/ sign up buttons*/}
           <div className="navbar-auth">
             <Link href="/sign-in" className="btn-sign-in">
               Sign In
