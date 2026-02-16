@@ -2,7 +2,7 @@ import { Sword, Zap, Trophy, TrendingUp, Users, Target } from 'lucide-react';
 import Link from 'next/link';
 import SignInBar from './components/SignInBar/SignInBar';
 import './page.css';
-
+import Image from "next/image";
 
 
 export default function LandingPage() {
@@ -39,7 +39,14 @@ export default function LandingPage() {
           <div className="hero-preview">
             <div className="character-card">
               <div className="character-preview">
-                <div className="character-avatar">🎲</div>
+                <div className="character-avatar">
+                  <Image
+    src="/barbarian.png"
+    alt="Barbarian"
+    width={200}
+    height={200}
+  />
+                </div>
                 {/* dice = placeholder till i have more time on the sprites/gifs -----------------------------*/}
                 <div className="character-details">
                   <h3 className="character-name">Bob the Barbarian</h3>
@@ -123,21 +130,36 @@ export default function LandingPage() {
           {/* Class Cards - Static for now we can add modals later or pages /about ... something to discuss */}
           <div className="class-selector">
             <div className="class-card glass-card">
-              <div className="class-icon">🪓</div>
+              <div className="class-icon"><Image
+    src="/barbarian.png"
+    alt="Barbarian"
+    width={200}
+    height={200}
+  /></div>
               <h3 className="class-name">Barbarian</h3>
               <p className="class-tagline">Master of Raw Strength</p>
               <p className="class-description">Dominate with heavy compound lifts and progressive overload</p>
             </div>
 
             <div className="class-card glass-card">
-              <div className="class-icon">⚔️</div>
+              <div className="class-icon"> <Image
+    src="/rogue.gif"
+    alt="Rogue"
+    width={200}
+    height={200}
+  /></div>
               <h3 className="class-name">Rogue</h3>
               <p className="class-tagline">Agility & Control</p>
               <p className="class-description">Master bodyweight movements and calisthenics</p>
             </div>
 
             <div className="class-card glass-card">
-              <div className="class-icon">🗡️🛡️</div>
+              <div className="class-icon"><Image
+    src="/knight_type_a.png"
+    alt="paladin"
+    width={200}
+    height={200}
+  /></div>
               <h3 className="class-name">Paladin</h3>
               <p className="class-tagline">Balanced Warrior</p>
               <p className="class-description">Combine strength training with endurance work</p>
