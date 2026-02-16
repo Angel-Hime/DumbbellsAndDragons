@@ -1,0 +1,493 @@
+/* program page dark bg gradient */
+.program-page {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #0a0e14, #0f172a, #0a0e14);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 1.5rem 2rem;
+}
+
+/* header stuff */
+.page-header {
+  margin-bottom: 2rem;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* week nav arrows */
+.week-navigation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 1rem;
+}
+
+.nav-button:hover {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.nav-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.week-display {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  padding: 0.5rem 1.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: white;
+}
+
+/* info badges at top */
+.program-info {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.info-badge {
+  background: rgba(16, 185, 129, 0.2);
+  color: #10b981;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* week progress ect ect  */
+.week-overview {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.overview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.overview-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.completion-badge {
+  background: linear-gradient(to right, #10b981, #059669);
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: white;
+}
+
+/* xp progress bar ------------------- */
+.progress-section {
+  margin-bottom: 1rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.progress-header span:first-child {
+  color: #cbd5e1;
+}
+
+.progress-header span:last-child {
+  color: #10b981;
+  font-weight: 600;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 0.75rem;
+  background: rgba(15, 23, 42, 0.6);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #10b981, #059669);
+  border-radius: 9999px;
+  transition: width 0.5s;
+}
+
+/* stats grid with icons---- might replace if i get time */
+.week-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.week-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.stat-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: rgba(16, 185, 129, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #10b981;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* day cards grid */
+.days-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+/* ---------------------------------------------indiviual day workout cards */
+.day-card {
+  background: rgba(30, 41, 59, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 2px solid rgba(51, 65, 85, 0.5);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.day-card:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+}
+
+.day-card.completed {
+  border-color: #10b981;
+  background: rgba(16, 185, 129, 0.05);
+}
+
+.day-card.today {
+  border-color: #10b981;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+}
+
+.day-card.rest {
+  opacity: 0.7;
+}
+
+.day-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ----------------------------------------top of day card */
+.day-header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.day-title-section {
+  flex: 1;
+}
+
+.day-date {
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.day-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.day-subtitle {
+  font-size: 0.875rem;
+  color: #10b981;
+}
+
+/* status badges - complted, today, locked etc if we end up stikcing with this */
+.day-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-badge.completed {
+  background: #10b981;
+  color: white;
+}
+
+.status-badge.today {
+  background: linear-gradient(to right, #10b981, #059669);
+  color: white;
+}
+
+.status-badge.rest {
+  background: rgba(100, 116, 139, 0.2);
+  color: #cbd5e1;
+}
+
+.status-badge.locked {
+  background: rgba(51, 65, 85, 0.3);
+  color: #64748b;
+}
+
+.status-icon {
+  font-size: 1.5rem;
+}
+
+/* exercise list area */
+.day-body {
+  padding: 1.5rem;
+}
+
+/* list of exercises */
+.exercise-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-item:last-child {
+  margin-bottom: 0;
+}
+
+/* name, sets, reps etc ect */
+.exercise-details {
+  flex: 1;
+}
+
+.exercise-name {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.exercise-sets {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.exercise-xp {
+  font-size: 0.875rem;
+  color: #10b981;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Rest Message */
+.rest-message {
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+  padding: 1rem;
+}
+
+.rest-message p {
+  margin-bottom: 0.5rem;
+}
+
+.rest-message p:last-child {
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+/* --------------------------------------bottom of card with xp and buttons */
+.day-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(51, 65, 85, 0.3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.estimated-xp {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.xp-value {
+  color: #10b981;
+  font-weight: 700;
+}
+
+
+.day-action {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, #10b981, #059669);
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-size: 0.875rem;
+}
+
+.day-action:hover {
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.5);
+  transform: translateY(-2px);
+}
+
+.day-action.secondary {
+  background: transparent;
+  border: 2px solid #334155;
+}
+
+.day-action.secondary:hover {
+  border-color: #10b981;
+  background: transparent;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .program-page {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .week-navigation {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .week-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .day-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .day-status {
+    width: 100%;
+  }
+
+  .day-name {
+    font-size: 1.25rem;
+  }
+
+  .day-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .day-action {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .week-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .program-info {
+    flex-direction: column;
+  }
+
+  .info-badge {
+    text-align: center;
+  }
+}
