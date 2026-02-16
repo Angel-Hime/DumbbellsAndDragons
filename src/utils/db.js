@@ -1,8 +1,9 @@
-import { Pool } from 'pg';
+//! Install pg
 
+import pg from "pg";
 
-const db = new Pool({
-  connectionString: process.env.DATABASE_URL,
+const db = new pg.Pool({
+  connectionString: process.env.NEXT_PUBLIC_DATABASE_URL,
   ssl: {
     rejectUnauthorized: false 
   }
