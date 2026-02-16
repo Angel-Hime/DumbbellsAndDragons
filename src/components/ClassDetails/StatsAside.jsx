@@ -1,6 +1,6 @@
 export default function StatsAside({ styles, classChoice, classData }) {
   return (
-    <div className={styles.class_showcase_stats}>
+    <div className={styles.charSheet_stats}>
       <div className={styles.showcase_stat}>
         <span>stat placeholder</span>
         <div className={styles.showcase_bar_bg}>

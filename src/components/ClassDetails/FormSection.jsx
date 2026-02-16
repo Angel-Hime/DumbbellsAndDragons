@@ -2,9 +2,8 @@ export default function FormSection({ styles, classChoice, classData }) {
   // classChoice will be added to the form submission
 
   return (
-    <div className={styles.class_details_showcase}>
+    <div className={styles.charSheet_form}>
       <form>
-        {" "}
         <fieldset>
           <legend>Your Data</legend>
 

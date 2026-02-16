@@ -16,13 +16,13 @@ export default function HeroSection({ styles, classChoice, classData }) {
         />
       </div>
 
-      <div className={`p-2 border-0 border-amber-100 rounded-2xl`}>
-        <h3 className={styles.class_showcase_name}>nameVariable-fromDB</h3>
-        <p className={styles.class_showcase_tagline}>Character Name</p>
+      <div className={styles.name_block}>
+        <h3 className={styles.character_name}>nameVariable-fromDB</h3>
+        <p className={styles.tagline}>Character Name</p>
         <h3 className={styles.class_showcase_name}>
           {classData[classChoice.class].name}
         </h3>
-        <p className={styles.class_showcase_tagline}>Character Name</p>
+        <p className={styles.tagline_right}>Class Name</p>
       </div>
 
       <div className={styles.class_showcase_info}>
