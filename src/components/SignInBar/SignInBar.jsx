@@ -1,6 +1,5 @@
 import Link from "next/link";
 import "./signinbar.css";
-import { SignUpButton, SignInButton } from "@clerk/nextjs";
 
 export default function SignInBar() {
   return (
@@ -14,12 +13,12 @@ export default function SignInBar() {
           </Link>
 
           <div className="navbar-auth">
-            <SignInButton>
-              <button className="btn-login">Sign In</button>
-            </SignInButton>
-            <SignUpButton>
-              <button className="btn-signup">Sign Up</button>
-            </SignUpButton>
+            <Link href="/sign-in" className="btn-sign-in">
+              Sign In
+            </Link>
+            <Link href="/sign-up" className="btn-sign-up">
+              Sign Up
+            </Link>
           </div>
         </div>
       </div>
