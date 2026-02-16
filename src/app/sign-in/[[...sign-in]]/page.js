@@ -1,10 +1,12 @@
 import { SignIn } from "@clerk/nextjs";
 import styles from "./sign-in.module.css";
+import SignInBar from "@/components/SignInBar/SignInBar";
 
 export default async function signInPage() {
   return (
     <>
       <section className={styles.page_wrapper}>
+        <SignInBar />
         <section className={styles.hero_section}>
           <div className={styles.hero_background}>
             <div className={`${styles.gradient_blob} mt-2 ml-2 bg-black`} />
