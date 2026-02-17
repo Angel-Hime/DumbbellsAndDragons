@@ -1,23 +1,40 @@
-import SignUpHeader from "@/components/SignUpHeader/SignUpHeader";
 import styles from "./my-character.module.css";
 import { classData } from "@/lib/mockData";
 import HeroSection from "@/components/ClassDetails/HeroSection";
 import StatsAside from "@/components/ClassDetails/StatsAside";
 import FormSection from "@/components/ClassDetails/FormSection";
 import { currentUser } from "@clerk/nextjs/server";
+import NavBar from "@/components/Navigation/NavBar";
+import { db } from "@/utils/dbConnection";
+import { redirect } from "next/navigation";
 
 export default async function MyCharacter({ params }) {
-  const { currentid } = await params;
+  const { id } = await params;
+  console.log(id);
   const user = await currentUser();
-  console.log(user);
+  // console.log(user);
 
-  // I will need to pull data from the user table
-  // I will need to pull data from the
+  const userQuery = (
+    await db.query(
+      `SELECT dd_users.*, dd_classes.*, dd_progression.* 
+FROM dd_users 
+JOIN dd_classes ON dd_users.classes_id_fk = dd_classes.id
+JOIN dd_progression ON dd_users.clerk_id = dd_progression.user_id_fk
+WHERE clerk_id = $1`,
+      [user?.id],
+    )
+  ).rows[0];
+
+  if (!userQuery) {
+    redirect("/choose-class");
+  }
+
   // classChoice will need to be the user's choice
-  const classChoice = null;
+
   return (
     <>
       <div className={styles.page_wrapper}>
+        <NavBar />
         <section className={styles.section}>
           <div className={styles.container}>
             <div className={styles.section_header}>
@@ -29,26 +46,26 @@ export default async function MyCharacter({ params }) {
 
             <section className={styles.charSheet}>
               {/* Import a Div with props signifying the classChoice.class option to ensure correct data is pulled*/}
-              {/* <HeroSection
+              <HeroSection
                 user={user}
+                classChoice={userQuery}
                 classData={classData}
-                classChoice={classChoice}
                 styles={styles}
-              /> */}
+              />
               {/* import an aside with the stats data */}
-              {/* <StatsAside
+              <StatsAside
                 user={user}
+                classChoice={userQuery}
                 classData={classData}
-                classChoice={classChoice}
                 styles={styles}
-              /> */}
+              />
               {/* import a section with a form and class details */}
-              {/* <FormSection
-                user={user}
+              <FormSection
+                user={user.id}
+                classChoice={userQuery}
                 classData={classData}
-                classChoice={classChoice}
                 styles={styles}
-              /> */}
+              />
             </section>
           </div>
         </section>

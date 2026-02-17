@@ -3,6 +3,7 @@
   min-height: 100vh;
   background: linear-gradient(to bottom, #0a0e14, #0f172a, #0a0e14);
   color: white;
+  align-content: center;
 }
 
 .hero_section {

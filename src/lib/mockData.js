@@ -90,7 +90,7 @@ export function getDayStatus(day, currentDate) {
 }
 
 export const classData = {
-  1: {
+  Barbarian: {
     imageSrc: "/barbarian.png",
     imageAlt: "Barbarian",
     name: "Barbarian",
@@ -106,7 +106,7 @@ export const classData = {
       s3: ["Vitality", "70"],
     },
   },
-  2: {
+  Rogue: {
     imageSrc: "/rogue.gif",
     imageAlt: "Rogue",
     name: "Rogue",
@@ -118,7 +118,7 @@ export const classData = {
       s3: ["Vitality", "70"],
     },
   },
-  3: {
+  Paladin: {
     imageSrc: "/knight_type_a.png",
     imageAlt: "Paladin",
     name: "Paladin",

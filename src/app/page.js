@@ -3,6 +3,11 @@ import Link from "next/link";
 import SignInBar from "@/components/SignInBar/SignInBar";
 import "./page.css";
 import Image from "next/image";
+import PaladinDetails from "@/components/ClassDetails/PaladinDetails";
+import RogueDetails from "@/components/ClassDetails/RogueDetails";
+import BarbarianDetails from "@/components/ClassDetails/BarbarianDetails";
+import styles from "@/app/choose-class/choose-class.module.css";
+import { classData } from "@/lib/mockData";
 
 export default async function LandingPage({ searchParams }) {
   const classChoice = await searchParams;
@@ -140,7 +145,7 @@ export default async function LandingPage({ searchParams }) {
           {/* Class Cards - Static for now we can add modals later or pages /about ... something to discuss */}
           <div className="class-selector">
             <div className="class-card glass-card">
-              <Link href={`/?class=1#classDetails`}>
+              <Link href={`/?class=Barbarian#classDetails`}>
                 <div className="class-icon">
                   <Image
                     src="/barbarian.png"
@@ -158,7 +163,7 @@ export default async function LandingPage({ searchParams }) {
             </div>
 
             <div className="class-card glass-card">
-              <Link href={`/?class=2#classDetails`}>
+              <Link href={`/?class=Rogue#classDetails`}>
                 <div className="class-icon">
                   <Image
                     src="/rogue.gif"
@@ -176,7 +181,7 @@ export default async function LandingPage({ searchParams }) {
             </div>
 
             <div className="class-card glass-card">
-              <Link href={`/?class=3#classDetails`}>
+              <Link href={`/?class=Paladin#classDetails`}>
                 <div className="class-icon">
                   <Image
                     src="/knight_type_a.png"
@@ -196,7 +201,32 @@ export default async function LandingPage({ searchParams }) {
 
           {/* Example Class Details mock up  */}
           {/* Annabel to make this dynamic like choose class */}
-          <div className="class-details-showcase glass-card">
+          {classChoice.class === "Barbarian" ? (
+            <>
+              <BarbarianDetails
+                styles={styles}
+                classData={classData}
+                classChoice={classChoice}
+              />
+            </>
+          ) : classChoice.class === "Rogue" ? (
+            <>
+              <RogueDetails
+                styles={styles}
+                classData={classData}
+                classChoice={classChoice}
+              />
+            </>
+          ) : classChoice.class === "Paladin" ? (
+            <>
+              <PaladinDetails
+                styles={styles}
+                classData={classData}
+                classChoice={classChoice}
+              />
+            </>
+          ) : null}
+          {/* <div className="class-details-showcase glass-card">
             <div className="class-showcase-header">
               <div className="class-showcase-icon">🪓</div>
               <div>
@@ -250,7 +280,7 @@ export default async function LandingPage({ searchParams }) {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
