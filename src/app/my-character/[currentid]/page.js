@@ -1,65 +1,54 @@
 import SignUpHeader from "@/components/SignUpHeader/SignUpHeader";
-import styles from "./complete-character.module.css";
+import styles from "./my-character.module.css";
 import { classData } from "@/lib/mockData";
 import HeroSection from "@/components/ClassDetails/HeroSection";
 import StatsAside from "@/components/ClassDetails/StatsAside";
 import FormSection from "@/components/ClassDetails/FormSection";
 import { currentUser } from "@clerk/nextjs/server";
-import Link from "next/link";
 
-export default async function CompleteCharacter({ params }) {
-  const classChoice = await params;
+export default async function MyCharacter({ params }) {
+  const { currentid } = await params;
   const user = await currentUser();
   console.log(user);
 
+  // I will need to pull data from the user table
+  // I will need to pull data from the
+  // classChoice will need to be the user's choice
+  const classChoice = null;
   return (
     <>
       <div className={styles.page_wrapper}>
-        <SignUpHeader classChoice={classChoice} />
-
         <section className={styles.section}>
           <div className={styles.container}>
             <div className={styles.section_header}>
-              <h2 className={styles.section_title}>Complete Your Character</h2>
-              <p className={styles.section_description}>
-                You have chosen your path... now share your backstory
-              </p>
+              <h2 className={styles.section_title}> My Character</h2>
+              <p className={styles.section_description}>Your story so far...</p>
+              <p>Everyone&apos;s story can be retold...</p>
+              {/* edit button here */}
             </div>
-            <Link href={"/choose-class"} className={styles.btn_secondary}>
-              Return
-              <svg className="cl-buttonArrowIcon self-center h-2 -scale-x-100">
-                <path
-                  className="self-center"
-                  fill="currentColor"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="1.5"
-                  d="m7.25 5-3.5-2.25v4.5L7.25 5Z"
-                ></path>
-              </svg>
-            </Link>
+
             <section className={styles.charSheet}>
               {/* Import a Div with props signifying the classChoice.class option to ensure correct data is pulled*/}
-              <HeroSection
+              {/* <HeroSection
                 user={user}
                 classData={classData}
                 classChoice={classChoice}
                 styles={styles}
-              />
+              /> */}
               {/* import an aside with the stats data */}
-              <StatsAside
+              {/* <StatsAside
                 user={user}
                 classData={classData}
                 classChoice={classChoice}
                 styles={styles}
-              />
+              /> */}
               {/* import a section with a form and class details */}
-              <FormSection
+              {/* <FormSection
+                user={user}
                 classData={classData}
                 classChoice={classChoice}
                 styles={styles}
-              />
+              /> */}
             </section>
           </div>
         </section>

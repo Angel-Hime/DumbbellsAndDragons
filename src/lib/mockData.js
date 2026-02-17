@@ -100,7 +100,11 @@ export const classData = {
       tag2: "Perfect for power-building and strength gains!",
     },
     profs: { p1: "Heavy Squats", p2: "Deadlifts", p3: "Bench Press" },
-    stats: { Strength: 84, Stamina: 60, Vitality: 70 },
+    stats: {
+      s1: ["Strength", "84"],
+      s2: ["Stamina", "60"],
+      s3: ["Vitality", "70"],
+    },
   },
   2: {
     imageSrc: "/rogue.gif",
@@ -108,7 +112,11 @@ export const classData = {
     name: "Rogue",
     details: { title: "", tag1: "", tag2: "" },
     profs: { p1: "y", p2: "y", p3: "y" },
-    stats: { Strength: 1, Stamina: 1, Vitality: 1 },
+    stats: {
+      s1: ["Strength", "56"],
+      s2: ["Stamina", "80"],
+      s3: ["Vitality", "70"],
+    },
   },
   3: {
     imageSrc: "/knight_type_a.png",
@@ -116,6 +124,10 @@ export const classData = {
     name: "Paladin",
     details: { title: "", tag1: "", tag2: "" },
     profs: { p1: "x", p2: "x", p3: "x" },
-    stats: { Strength: 2, Stamina: 2, Vitality: 2 },
+    stats: {
+      s1: ["Strength", "60"],
+      s2: ["Stamina", "65"],
+      s3: ["Vitality", "85"],
+    },
   },
 };

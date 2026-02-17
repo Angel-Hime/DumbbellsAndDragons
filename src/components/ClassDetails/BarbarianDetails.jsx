@@ -1,8 +1,17 @@
-export default function BarbarianDetails({ styles }) {
+import Image from "next/image";
+
+export default function BarbarianDetails({ styles, classData, classChoice }) {
   return (
     <div className={styles.class_details_showcase}>
       <div className={styles.class_showcase_header}>
-        <div className={styles.class_showcase_icon}>🪓</div>
+        <div className={styles.class_showcase_icon}>
+          <Image
+            src={classData[classChoice.class].imageSrc}
+            alt={classData[classChoice.class].imageAlt}
+            width={200}
+            height={200}
+          />
+        </div>
         <div>
           <h3 className={styles.class_showcase_name}>Barbarian</h3>
           <p className={styles.class_showcase_tagline}>
@@ -30,19 +39,19 @@ export default function BarbarianDetails({ styles }) {
           <div className={styles.showcase_stat}>
             <span>Strength</span>
             <div className={styles.showcase_bar_bg}>
-              <div className={`${styles.barbarian_gradient} w-9/10`} />
+              <div className={`${styles.barbarian_gradient} w-84/100`} />
             </div>
           </div>
           <div className={styles.showcase_stat}>
             <span>Stamina</span>
             <div className={styles.showcase_bar_bg}>
-              <div className={`${styles.barbarian_gradient} w-6/10`} />
+              <div className={`${styles.barbarian_gradient} w-60/100`} />
             </div>
           </div>
           <div className={styles.showcase_stat}>
             <span>Agility</span>
             <div className={styles.showcase_bar_bg}>
-              <div className={`${styles.barbarian_gradient} w-4/10`} />
+              <div className={`${styles.barbarian_gradient} w-70/100`} />
             </div>
           </div>
         </div>

@@ -4,6 +4,8 @@ import styles from "./choose-class.module.css";
 import Link from "next/link";
 import RogueDetails from "@/components/ClassDetails/RogueDetails";
 import PaladinDetails from "@/components/ClassDetails/PaladinDetails";
+import { classData } from "@/lib/mockData";
+import Image from "next/image";
 
 export default async function ChooseClass({ params, searchParams }) {
   const classChoice = await searchParams;
@@ -31,7 +33,14 @@ export default async function ChooseClass({ params, searchParams }) {
                 href={`/choose-class?class=1#classDetails`}
                 className={styles.class_card}
               >
-                <div className={styles.class_icon}>🪓</div>
+                <div className={styles.class_icon}>
+                  <Image
+                    src={"/barbarian.png"}
+                    alt={"Barbarian"}
+                    width={200}
+                    height={200}
+                  />
+                </div>
                 <h3 className={styles.class_name}>Barbarian</h3>
                 <p className={styles.class_tagline}>Master of Raw Strength</p>
                 <p className={styles.class_description}>
@@ -43,7 +52,14 @@ export default async function ChooseClass({ params, searchParams }) {
                 href={`/choose-class?class=2#classDetails`}
                 className={styles.class_card}
               >
-                <div className={styles.class_icon}>⚔️</div>
+                <div className={styles.class_icon}>
+                  <Image
+                    src={"/rogue.gif"}
+                    alt={"Rogue"}
+                    width={200}
+                    height={200}
+                  />
+                </div>
                 <h3 className={styles.class_name}>Rogue</h3>
                 <p className={styles.class_tagline}>Agility & Control</p>
                 <p className={styles.class_description}>
@@ -55,7 +71,14 @@ export default async function ChooseClass({ params, searchParams }) {
                 href={`/choose-class?class=3#classDetails`}
                 className={styles.class_card}
               >
-                <div className={styles.class_icon}>🗡️🛡️</div>
+                <div className={styles.class_icon}>
+                  <Image
+                    src={"/knight_type_a.png"}
+                    alt={"Paladin"}
+                    width={200}
+                    height={200}
+                  />
+                </div>
                 <h3 className={styles.class_name}>Paladin</h3>
                 <p className={styles.class_tagline}>Balanced Warrior</p>
                 <p className={styles.class_description}>
@@ -63,17 +86,20 @@ export default async function ChooseClass({ params, searchParams }) {
                 </p>
               </Link>
             </div>
-
+            <div id="classDetails"></div>
             {/* Example Class Details mock up  */}
             {classChoice.class === "1" ? (
-              <div id="classDetails">
-                {" "}
-                <BarbarianDetails styles={styles} />
+              <>
+                <BarbarianDetails
+                  styles={styles}
+                  classData={classData}
+                  classChoice={classChoice}
+                />
                 <Link
                   href={`/choose-class/${classChoice?.class}/complete-character`}
                   className={styles.btn_primary}
                 >
-                  Continue{" "}
+                  Continue
                   <svg className="cl-buttonArrowIcon self-center h-2">
                     <path
                       className="self-center"
@@ -86,16 +112,19 @@ export default async function ChooseClass({ params, searchParams }) {
                     ></path>
                   </svg>
                 </Link>
-              </div>
+              </>
             ) : classChoice.class === "2" ? (
-              <div id="classDetails">
-                {" "}
-                <RogueDetails styles={styles} />
+              <>
+                <RogueDetails
+                  styles={styles}
+                  classData={classData}
+                  classChoice={classChoice}
+                />
                 <Link
                   href={`/choose-class/${classChoice?.class}/complete-character`}
                   className={styles.btn_primary}
                 >
-                  Continue{" "}
+                  Continue
                   <svg className="cl-buttonArrowIcon self-center h-2">
                     <path
                       className="self-center"
@@ -108,16 +137,19 @@ export default async function ChooseClass({ params, searchParams }) {
                     ></path>
                   </svg>
                 </Link>
-              </div>
+              </>
             ) : classChoice.class === "3" ? (
-              <div id="classDetails">
-                {" "}
-                <PaladinDetails styles={styles} />
+              <>
+                <PaladinDetails
+                  styles={styles}
+                  classData={classData}
+                  classChoice={classChoice}
+                />
                 <Link
                   href={`/choose-class/${classChoice?.class}/complete-character`}
                   className={styles.btn_primary}
                 >
-                  Continue{" "}
+                  Continue
                   <svg className="cl-buttonArrowIcon self-center h-2">
                     <path
                       className="self-center"
@@ -130,7 +162,7 @@ export default async function ChooseClass({ params, searchParams }) {
                     ></path>
                   </svg>
                 </Link>
-              </div>
+              </>
             ) : null}
           </div>
         </section>

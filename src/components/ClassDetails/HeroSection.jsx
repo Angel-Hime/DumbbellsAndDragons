@@ -1,12 +1,10 @@
 import Image from "next/image";
 
-export default function HeroSection({ styles, classChoice, classData }) {
+export default function HeroSection({ styles, classChoice, classData, user }) {
   console.log(classData[classChoice.class]);
   console.log(classChoice.class);
   return (
     <div className={styles.class_details_showcase}>
-      {/* keep this */}
-
       <div className={styles.class_icon}>
         <Image
           src={classData[classChoice.class].imageSrc}
@@ -17,18 +15,21 @@ export default function HeroSection({ styles, classChoice, classData }) {
       </div>
 
       <div className={styles.name_block}>
-        <h3 className={styles.character_name}>nameVariable-fromDB</h3>
+        <h3 className={styles.character_name}>{user?.username}</h3>
+
         <p className={styles.tagline}>Character Name</p>
-        <h3 className={styles.class_showcase_name}>
+        <hr />
+        <h3 className={styles.class_name}>
           {classData[classChoice.class].name}
         </h3>
         <p className={styles.tagline_right}>Class Name</p>
       </div>
 
-      <div className={styles.class_showcase_info}>
-        <p>Level</p>
-        <p>X</p>
-        <p>______</p>
+      <div className={styles.user_level}>
+        <p className="self-center pt-4 text-gray-300">Level</p>
+        <p className="self-center pb-4 decoration-1 underline decoration-gray-300 font-bold text-2xl">
+          1
+        </p>
       </div>
 
       <div className={styles.class_showcase_info}>
