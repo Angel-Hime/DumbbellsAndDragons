@@ -1,8 +1,18 @@
-export default function PaladinDetails({ styles }) {
+import Image from "next/image";
+
+export default function PaladinDetails({ styles, classData, classChoice }) {
   return (
     <div className={styles.class_details_showcase}>
       <div className={styles.class_showcase_header}>
-        <div className={styles.class_showcase_icon}>🗡️🛡️</div>
+        <div className={styles.class_showcase_icon}>
+          {" "}
+          <Image
+            src={classData[classChoice.class].imageSrc}
+            alt={classData[classChoice.class].imageAlt}
+            width={200}
+            height={200}
+          />
+        </div>
         <div>
           <h3 className={styles.class_showcase_name}>Paladin</h3>
           <p className={styles.class_showcase_tagline}>Balanced Warrior</p>

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import "./signinbar.css";
+import { SignInButton, SignUpButton } from "@clerk/nextjs";
 
 export default function SignInBar() {
   return (
@@ -12,14 +13,16 @@ export default function SignInBar() {
             <span className="logo-text">Dumbbells & Dragons</span>
           </Link>
 
+          {/* Accept these below changes*/}
           <div className="navbar-auth">
-            <Link href="/sign-in" className="btn-sign-in">
-              Sign In
-            </Link>
-            <Link href="/sign-up" className="btn-sign-up">
-              Sign Up
-            </Link>
+            <SignInButton>
+              <button className="btn-login">Sign In</button>
+            </SignInButton>
+            <SignUpButton>
+              <button className="btn-signup">Sign Up</button>
+            </SignUpButton>{" "}
           </div>
+          {/*Accept these above changes*/}
         </div>
       </div>
     </nav>

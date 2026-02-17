@@ -67,26 +67,20 @@
   flex-direction: column;
   align-items: center;
 }
-
-.class-icon {
+*/
+.class_icon {
   font-size: 3.75rem;
   margin-bottom: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
-} */
+}
 /* update added after the images  */
-/*
-.class-icon img {
+
+.class_icon img {
   object-fit: contain;
   max-width: 100%;
   height: auto;
-}  
-  */
-
-.class_icon {
-  font-size: 3.75rem;
-  margin-bottom: 1rem;
 }
 
 .class_name {
