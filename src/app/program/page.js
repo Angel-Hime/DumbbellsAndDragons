@@ -5,7 +5,7 @@ import { useAuth } from '@clerk/nextjs';
 import ProgramHeader from '@/components/program/ProgramHeader';
 import WeekOverview from '@/components/program/WeekOverview';
 import DayCard from '@/components/program/DayCard';
-import { getWeek } from '@/app/lib/mockData'; //still need mockdata please dont delete yet 
+import { getWeek } from '@/lib/mockData'; // TODO: -----> remove once db is fully running and move getWeek helper function
 import './program.css';
 
 export default function ProgramPage() {
@@ -17,8 +17,9 @@ export default function ProgramPage() {
 
   useEffect(() => {
     async function loadProgram() {
-      if (!isLoaded) return;
       
+      if (!isLoaded) return;
+
       if (!userId) {
         window.location.href = '/sign-in';
         return;
@@ -27,14 +28,16 @@ export default function ProgramPage() {
       try {
         const response = await fetch('/api/program');
         const data = await response.json();
-        
+
         if (data.error) {
           console.error('Error loading program:', data.error);
           setError(data.error);
-          
-          if (data.error.includes('User not found')) {
-            window.location.href = '/onboarding';
-          }
+
+          // TODO: -----> redirect to /createcharacter once character page is built
+          // if (data.error.includes('User not found')) {
+          //   window.location.href = '/sign-up';
+          // }
+
           setLoading(false);
           return;
         }
@@ -52,27 +55,19 @@ export default function ProgramPage() {
     loadProgram();
   }, [isLoaded, userId]);
 
+
   const goToPrevWeek = () => {
-    if (currentWeekNum > 1) {
-      setCurrentWeekNum(currentWeekNum - 1);
-    }
+    if (currentWeekNum > 1) setCurrentWeekNum(currentWeekNum - 1);
   };
 
   const goToNextWeek = () => {
-    if (program && currentWeekNum < program.totalWeeks) {
-      setCurrentWeekNum(currentWeekNum + 1);
-    }
+    if (program && currentWeekNum < program.totalWeeks) setCurrentWeekNum(currentWeekNum + 1);
   };
 
   if (!isLoaded || loading) {
     return (
       <div className="program-page">
-        <div style={{
-          padding: '4rem',
-          textAlign: 'center',
-          color: '#64748b',
-          fontSize: '1.25rem'
-        }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#64748b', fontSize: '1.25rem' }}>
           Loading program...
         </div>
       </div>
@@ -82,12 +77,7 @@ export default function ProgramPage() {
   if (error) {
     return (
       <div className="program-page">
-        <div style={{
-          padding: '4rem',
-          textAlign: 'center',
-          color: '#ef4444',
-          fontSize: '1.25rem'
-        }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#ef4444', fontSize: '1.25rem' }}>
           {error}
         </div>
       </div>
@@ -97,12 +87,7 @@ export default function ProgramPage() {
   if (!program) {
     return (
       <div className="program-page">
-        <div style={{
-          padding: '4rem',
-          textAlign: 'center',
-          color: '#64748b',
-          fontSize: '1.25rem'
-        }}>
+        <div style={{ padding: '4rem', textAlign: 'center', color: '#64748b', fontSize: '1.25rem' }}>
           No program found. Please complete onboarding.
         </div>
       </div>
@@ -113,8 +98,8 @@ export default function ProgramPage() {
 
   return (
     <div className="program-page">
-      
-      <ProgramHeader 
+
+      <ProgramHeader
         title="Your Training Program"
         programName={program.name}
         level={program.level}
@@ -124,7 +109,7 @@ export default function ProgramPage() {
         onNextWeek={goToNextWeek}
       />
 
-      <WeekOverview 
+      <WeekOverview
         weeklyXpGoal={program.weeklyXpGoal}
         weeklyXpEarned={program.weeklyXpEarned}
         workoutsCompleted={program.workoutsCompleted}
@@ -137,6 +122,7 @@ export default function ProgramPage() {
           <DayCard key={day.id} day={day} />
         ))}
       </div>
+
     </div>
   );
 }
