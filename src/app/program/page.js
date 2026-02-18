@@ -7,6 +7,7 @@ import WeekOverview from '@/components/program/WeekOverview';
 import DayCard from '@/components/program/DayCard';
 import { getWeek } from '@/lib/mockData'; // TODO: -----> remove once db is fully running and move getWeek helper function
 import './program.css';
+import NavBar from '@/components/Navigation/NavBar';
 
 export default function ProgramPage() {
   const { isLoaded, userId } = useAuth();
@@ -97,7 +98,9 @@ export default function ProgramPage() {
   const currentWeek = getWeek(program, currentWeekNum);
 
   return (
+    
     <div className="program-page">
+      <NavBar />
 
       <ProgramHeader
         title="Your Training Program"
