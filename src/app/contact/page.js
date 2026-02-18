@@ -1,6 +1,35 @@
 import Link from "next/link";
 import "./contact.css";
 
+export const metadata = {
+  title: "Contact Us | Dumbbells & Dragon",
+  description:
+    "Reach out to the Dumbbells & Dragon team. Ask questions, report issues, or get help with your fitness quests and RPG adventures.",
+  keywords: [
+    "Dumbbells & Dragon",
+    "contact",
+    "help",
+    "assistance",
+    "aid",
+    "support",
+    "fitness RPG",
+    "D&D workouts",
+  ],
+  authors: [{ name: "Dumbbells & Dragon Team" }],
+  creator: "Dumbbells & Dragon",
+  publisher: "Dumbbells & Dragon Studios",
+  openGraph: {
+    type: "website",
+    url: "https://dumbbells-and-dragons.vercel.app/contact",
+    title: "Contact Us | Dumbbells & Dragon",
+    description:
+      "Need help with your fitness quests? Contact the Dumbbells & Dragon team for support or guidance.",
+    siteName: "Dumbbells & Dragon",
+    images: [],
+  },
+  robots: { index: true, follow: true },
+};
+
 export default function ContactPage() {
   return (
     <main className="contact-wrapper">

@@ -1,6 +1,32 @@
 import "./privacy.css";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Privacy Policy | Dumbbells & Dragon",
+  description:
+    "Learn how Dumbbells & Dragon collects, stores, and uses your personal data in compliance with UK GDPR. Protect your privacy while training and adventuring.",
+  keywords: [
+    "Dumbbells & Dragon",
+    "privacy policy",
+    "data protection",
+    "UK GDPR",
+    "fitness RPG",
+  ],
+  authors: [{ name: "Dumbbells & Dragon Team" }],
+  creator: "Dumbbells & Dragon",
+  publisher: "Dumbbells & Dragon Studios",
+  openGraph: {
+    type: "website",
+    url: "https://dumbbells-and-dragons.vercel.app/privacy",
+    title: "Privacy Policy | Dumbbells & Dragon",
+    description:
+      "Understand how your data is used and protected while using Dumbbells & Dragon's gamified fitness app.",
+    siteName: "Dumbbells & Dragon",
+    images: [],
+  },
+  robots: { index: true, follow: true },
+};
+
 export default function PrivacyPage() {
   return (
     <main className="legal-wrapper">

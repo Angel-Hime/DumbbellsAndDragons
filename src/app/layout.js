@@ -38,11 +38,10 @@ export const metadata = {
   authors: [{ name: "The Dumbbells & Dragon Team" }],
   creator: "Dumbbells & Dragon",
   publisher: "Dumbbells & Dragon Studios",
-  metadataBase: new URL("https://www.dumbbellsanddragon.com"),
-
+  metadataBase: new URL("https://dumbbells-and-dragons.vercel.app/"),
   openGraph: {
     type: "website",
-    url: "https://www.dumbbellsanddragon.com",
+    url: "https://dumbbells-and-dragons.vercel.app/",
     title: "Dumbbells & Dragon | Train Like a Hero",
     description:
       "A fantasy fitness experience inspired by Dungeons & Dragons. Dumbbells & Dragon blends fantasy RPG mechanics with real-world training. Train hard, complete quests, roll dice, and forge your legend in the fire. ",

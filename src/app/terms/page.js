@@ -1,5 +1,31 @@
 import "./terms.css";
 
+export const metadata = {
+  title: "Terms of Service | Dumbbells & Dragon",
+  description:
+    "Read the official Terms of Service for Dumbbells & Dragon, your UK-based gamified fitness RPG. Understand your rights and responsibilities while using the app.",
+  keywords: [
+    "Dumbbells & Dragon",
+    "terms of service",
+    "UK fitness app",
+    "legal",
+    "RPG workouts",
+  ],
+  authors: [{ name: "Dumbbells & Dragon Team" }],
+  creator: "Dumbbells & Dragon",
+  publisher: "Dumbbells & Dragon Studios",
+  openGraph: {
+    type: "website",
+    url: "https://dumbbells-and-dragons.vercel.app/terms",
+    title: "Terms of Service | Dumbbells & Dragon",
+    description:
+      "View the official Terms of Service for Dumbbells & Dragon. Ensure you know your responsibilities while completing quests and training.",
+    siteName: "Dumbbells & Dragon",
+    images: [],
+  },
+  robots: { index: true, follow: true },
+};
+
 export default function TermsPage() {
   return (
     <main className="legal-wrapper">
