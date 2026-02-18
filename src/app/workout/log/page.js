@@ -6,6 +6,8 @@ import { useAuth } from "@clerk/nextjs";
 import "./workout.css";
 export const dynamic = "force-dynamic";
 
+export const dynamic = 'force-dynamic';
+
 export default function WorkoutLogPage() {
   const { isLoaded, userId } = useAuth();
   const router = useRouter();
@@ -189,6 +191,8 @@ export default function WorkoutLogPage() {
   const completedSets = sets.filter((s) => s.completed).length;
   const isWorkoutComplete = completedSets === totalSets;
 
+  
+
   return (
     <div className="workout-log-page">
       <div className="container">
@@ -273,6 +277,8 @@ export default function WorkoutLogPage() {
           const exSets = sets.filter((s) => s.exerciseIndex === exIdx);
           const isExComplete = exSets.every((s) => s.completed);
           const isUpcoming = exIdx > currentExerciseIndex;
+
+          if (isExComplete) return null;
 
           return (
             <div
