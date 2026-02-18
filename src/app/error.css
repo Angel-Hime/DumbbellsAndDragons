@@ -1,5 +1,5 @@
 /* Full-page wrapper */
-.notfound-wrapper {
+.error-wrapper {
   min-height: 100vh;
   background: linear-gradient(to bottom, #0a0e14, #0f172a, #0a0e14);
   display: flex;
@@ -9,8 +9,8 @@
   color: white;
 }
 
-/* Glass-style card */
-.notfound-card {
+/* Glass-style card (matches .glass-card) */
+.error-card {
   max-width: 520px;
   width: 100%;
   background: rgba(30, 41, 59, 0.5);
@@ -24,20 +24,20 @@
 }
 
 /* Icon */
-.notfound-icon {
+.error-icon {
   font-size: 3.75rem;
   margin-bottom: 1rem;
 }
 
 /* Title */
-.notfound-title {
+.error-title {
   font-size: 2.25rem;
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
 /* Description */
-.notfound-description {
+.error-description {
   font-size: 1rem;
   line-height: 1.6;
   color: #cbd5e1;
@@ -45,15 +45,15 @@
 }
 
 /* Actions */
-.notfound-actions {
+.error-actions {
   display: flex;
   gap: 1rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-/* Buttons */
-.notfound-button {
+/* Buttons — aligned with hero buttons */
+.error-button {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   font-weight: 700;
@@ -62,25 +62,26 @@
   cursor: pointer;
   transition: all 0.3s;
   display: inline-block;
+  border: none;
 }
 
-/* Primary */
-.notfound-button.primary {
+/* Primary (green gradient) */
+.error-button.primary {
   background: linear-gradient(to right, #10b981, #059669);
   color: white;
 }
 
-.notfound-button.primary:hover {
+.error-button.primary:hover {
   box-shadow: 0 25px 50px -12px rgba(248, 244, 19, 0.5);
 }
 
 /* Secondary */
-.notfound-button.secondary {
+.error-button.secondary {
   background: transparent;
   border: 2px solid #334155;
   color: white;
 }
 
-.notfound-button.secondary:hover {
+.error-button.secondary:hover {
   border-color: #fbff21;
 }

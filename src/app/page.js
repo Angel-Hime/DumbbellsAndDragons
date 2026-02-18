@@ -9,6 +9,12 @@ import BarbarianDetails from "@/components/ClassDetails/BarbarianDetails";
 import styles from "@/app/choose-class/choose-class.module.css";
 import { classData } from "@/lib/mockData";
 
+export const metadata = {
+  title: "Dumbbells and Dragons",
+  description:
+    "Dumbbells & Dragon transforms workouts into epic quests. Pick your hero, choose your class, and start training. ",
+};
+
 export default async function LandingPage({ searchParams }) {
   const classChoice = await searchParams;
 
