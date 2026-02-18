@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from 'react';
 import { useAuth } from '@clerk/nextjs';
@@ -18,20 +18,19 @@ export default function ProgramPage() {
 
   useEffect(() => {
     async function loadProgram() {
-      
       if (!isLoaded) return;
 
       if (!userId) {
-        window.location.href = '/sign-in';
+        window.location.href = "/sign-in";
         return;
       }
 
       try {
-        const response = await fetch('/api/program');
+        const response = await fetch("/api/program");
         const data = await response.json();
 
         if (data.error) {
-          console.error('Error loading program:', data.error);
+          console.error("Error loading program:", data.error);
           setError(data.error);
 
           // TODO: -----> redirect to /createcharacter once character page is built
@@ -47,8 +46,8 @@ export default function ProgramPage() {
         setCurrentWeekNum(data.currentWeek);
         setLoading(false);
       } catch (error) {
-        console.error('Failed to load program:', error);
-        setError('Failed to load program. Please try again.');
+        console.error("Failed to load program:", error);
+        setError("Failed to load program. Please try again.");
         setLoading(false);
       }
     }
@@ -56,19 +55,26 @@ export default function ProgramPage() {
     loadProgram();
   }, [isLoaded, userId]);
 
-
   const goToPrevWeek = () => {
     if (currentWeekNum > 1) setCurrentWeekNum(currentWeekNum - 1);
   };
 
   const goToNextWeek = () => {
-    if (program && currentWeekNum < program.totalWeeks) setCurrentWeekNum(currentWeekNum + 1);
+    if (program && currentWeekNum < program.totalWeeks)
+      setCurrentWeekNum(currentWeekNum + 1);
   };
 
   if (!isLoaded || loading) {
     return (
       <div className="program-page">
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#64748b', fontSize: '1.25rem' }}>
+        <div
+          style={{
+            padding: "4rem",
+            textAlign: "center",
+            color: "#64748b",
+            fontSize: "1.25rem",
+          }}
+        >
           Loading program...
         </div>
       </div>
@@ -78,7 +84,14 @@ export default function ProgramPage() {
   if (error) {
     return (
       <div className="program-page">
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#ef4444', fontSize: '1.25rem' }}>
+        <div
+          style={{
+            padding: "4rem",
+            textAlign: "center",
+            color: "#ef4444",
+            fontSize: "1.25rem",
+          }}
+        >
           {error}
         </div>
       </div>
@@ -88,7 +101,14 @@ export default function ProgramPage() {
   if (!program) {
     return (
       <div className="program-page">
-        <div style={{ padding: '4rem', textAlign: 'center', color: '#64748b', fontSize: '1.25rem' }}>
+        <div
+          style={{
+            padding: "4rem",
+            textAlign: "center",
+            color: "#64748b",
+            fontSize: "1.25rem",
+          }}
+        >
           No program found. Please complete onboarding.
         </div>
       </div>
@@ -121,11 +141,9 @@ export default function ProgramPage() {
       />
 
       <div className="days-grid">
-        {currentWeek && currentWeek.days.map((day) => (
-          <DayCard key={day.id} day={day} />
-        ))}
+        {currentWeek &&
+          currentWeek.days.map((day) => <DayCard key={day.id} day={day} />)}
       </div>
-
     </div>
   );
 }
