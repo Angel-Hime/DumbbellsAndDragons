@@ -1,5 +1,8 @@
 "use client";
 
+import { redirect } from "next/router";
+import "./not-found.css";
+
 export default function GlobalError({ error, reset }) {
   return (
     <div className="error-container">
@@ -9,7 +12,7 @@ export default function GlobalError({ error, reset }) {
         <summary>Error Details (for developers)</summary>
         <pre>{error.message}</pre>
       </details>
-      <button onClick={reset} className="home-button">
+      <button onClick={redirect} className="home-button">
         TAKE ME HOME
       </button>
     </div>
