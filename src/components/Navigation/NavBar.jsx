@@ -1,6 +1,6 @@
 import Link from "next/link";
 import NavDropdownMenu from "./NavDropdownMenu";
-import { UserButton } from "@clerk/nextjs";
+import { SignOutButton, UserButton } from "@clerk/nextjs";
 import "./NavBar.css";
 
 export default function NavBar() {

@@ -199,23 +199,21 @@
 .name_block {
   display: flex;
   flex-direction: column;
-  padding: 0 2em 0 2em;
+  padding: 2em;
   border: 1px ridge rgba(128, 128, 128, 0.468);
   border-radius: 0.75rem;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .character_name {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
   place-self: flex-start;
 }
 
 .class_name {
   font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
   place-self: flex-end;
 }
 .tagline {

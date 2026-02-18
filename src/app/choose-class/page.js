@@ -6,12 +6,25 @@ import RogueDetails from "@/components/ClassDetails/RogueDetails";
 import PaladinDetails from "@/components/ClassDetails/PaladinDetails";
 import { classData } from "@/lib/mockData";
 import Image from "next/image";
+import { db } from "@/utils/dbConnection";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 export default async function ChooseClass({ params, searchParams }) {
   const classChoice = await searchParams;
   console.log(classChoice);
-
+  const user = await currentUser();
+  const userId = user?.id;
   // I need to set a variable which will be used the link for the continue button
+  const userQuery = await db.query(
+    `SELECT * FROM dd_users WHERE clerk_id = $1`,
+    [userId],
+  );
+
+  console.log(userQuery);
+  if (userQuery.length != 0) {
+    redirect(`/my-character/${user?.id}`);
+  }
 
   return (
     <>
@@ -30,7 +43,7 @@ export default async function ChooseClass({ params, searchParams }) {
             {/* Class Cards - Static for now we can add modals later or pages /about ... something to discuss */}
             <div className={styles.class_selector}>
               <Link
-                href={`/choose-class?class=1#classDetails`}
+                href={`/choose-class?class=Barbarian#classDetails`}
                 className={styles.class_card}
               >
                 <div className={styles.class_icon}>
@@ -49,7 +62,7 @@ export default async function ChooseClass({ params, searchParams }) {
               </Link>
 
               <Link
-                href={`/choose-class?class=2#classDetails`}
+                href={`/choose-class?class=Rogue#classDetails`}
                 className={styles.class_card}
               >
                 <div className={styles.class_icon}>
@@ -68,7 +81,7 @@ export default async function ChooseClass({ params, searchParams }) {
               </Link>
 
               <Link
-                href={`/choose-class?class=3#classDetails`}
+                href={`/choose-class?class=Paladin#classDetails`}
                 className={styles.class_card}
               >
                 <div className={styles.class_icon}>
@@ -88,7 +101,7 @@ export default async function ChooseClass({ params, searchParams }) {
             </div>
             <div id="classDetails"></div>
             {/* Example Class Details mock up  */}
-            {classChoice.class === "1" ? (
+            {classChoice.class === "Barbarian" ? (
               <>
                 <BarbarianDetails
                   styles={styles}
@@ -113,7 +126,7 @@ export default async function ChooseClass({ params, searchParams }) {
                   </svg>
                 </Link>
               </>
-            ) : classChoice.class === "2" ? (
+            ) : classChoice.class === "Rogue" ? (
               <>
                 <RogueDetails
                   styles={styles}
@@ -138,7 +151,7 @@ export default async function ChooseClass({ params, searchParams }) {
                   </svg>
                 </Link>
               </>
-            ) : classChoice.class === "3" ? (
+            ) : classChoice.class === "Paladin" ? (
               <>
                 <PaladinDetails
                   styles={styles}

@@ -6,12 +6,51 @@ import StatsAside from "@/components/ClassDetails/StatsAside";
 import FormSection from "@/components/ClassDetails/FormSection";
 import { currentUser } from "@clerk/nextjs/server";
 import Link from "next/link";
+import { db } from "@/utils/dbConnection";
+import { redirect } from "next/navigation";
 
 export default async function CompleteCharacter({ params }) {
   const classChoice = await params;
   const user = await currentUser();
-  console.log(user);
+  // console.log(user);
+  const userQuery = await db.query(
+    `SELECT * FROM dd_users WHERE clerk_id = $1`,
+    [user?.id],
+  );
 
+  console.log(userQuery);
+  if (userQuery.length != 0) {
+    redirect(`/my-character/${user?.id}`);
+  }
+
+  async function handleCompleteCharacterForm(formData) {
+    "use server";
+    console.log("submit");
+    const { age, gender, weight, bio } = Object.fromEntries(formData);
+    console.log(
+      user?.id,
+      user?.username,
+      gender,
+      age,
+      weight,
+      bio,
+      dbClasses[0].id,
+    );
+
+    // insert user row
+    db.query(
+      `INSERT INTO dd_users (clerk_id, username, gender, age, weight, bio, classes_id_fk) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+      [user?.id, user?.username, gender, age, weight, bio, dbClasses[0].id],
+    );
+
+    // insert progression row
+    db.query(`INSERT INTO dd_progression (user_id_fk) VALUES ($1)`, [user?.id]);
+
+    console.log("Success");
+
+    revalidatePath(`/dashboard`);
+    redirect(`/dashboard`);
+  }
   return (
     <>
       <div className={styles.page_wrapper}>
@@ -56,6 +95,8 @@ export default async function CompleteCharacter({ params }) {
               />
               {/* import a section with a form and class details */}
               <FormSection
+                handle={handleCompleteCharacterForm}
+                user={user}
                 classData={classData}
                 classChoice={classChoice}
                 styles={styles}

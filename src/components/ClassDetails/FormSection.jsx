@@ -1,82 +1,76 @@
 import { db } from "@/utils/dbConnection";
 import { revalidatePath } from "next/cache";
-import { SearchParamsContext } from "next/dist/shared/lib/hooks-client-context.shared-runtime";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export default function FormSection({
+export default async function FormSection({
   styles,
   classChoice,
   classData,
   user,
-  searchParams,
+  handle,
 }) {
-  async function handleCompleteCharacterForm(formData) {
-    "use server";
-    console.log("submit");
-    const { age, gender, weight, bio } = Object.fromEntries(formData);
-    console.log(age, gender, weight, bio);
-
-    // value model for user data
-    // 'user_39nCxdy8gb4l4m2Z9RML8n8cyoS',
-    // 'TestBarbarian',
-    // 'male',
-    // 25,
-    // 80,
-    // 'Test user for development',
-    // CURRENT_DATE,
-    // 1
-
-    // value model for progress
-    //'user_39nCxdy8gb4l4m2Z9RML8n8cyoS',
-    // 0,
-    // 1
-
-    // insert progression row
-    db.query(
-      `INSERT INTO dd_progression (user_id_fk, total_xp, level) VALUES ($1, $2, $3)`,
-      [user?.id, 0, 1],
-    );
-
-    db.query(
-      `INSERT INTO dd_users (clerk_id, username, gender, age, weight, bio, classes_id_fk) VALUES ($1, $2, $3, $4, $5)`,
-      [user?.id, user?.username, gender, age, weight, bio, classChoice],
-    );
-    console.log("Success");
-
-    // revalidatePath(`/dashboard`);
-    // redirect(`/dashboard`);
+  if (!user) {
+    const dbClasses = (
+      await db.query(`SELECT id FROM dd_classes WHERE class_name = ($1)`, [
+        classData[classChoice.class].name,
+      ])
+    ).rows;
+    console.log(dbClasses[0].id);
+  } else {
   }
 
+  console.log(user);
+  console.log(classChoice);
+  // this function will have to be in the page.js for complete-character --> pass the props through
+
   return (
-    <form
-      className={styles.charSheet_form}
-      action={handleCompleteCharacterForm}
-    >
+    <form className={styles.charSheet_form} action={handle}>
       <section className={styles.user_form}>
         <fieldset className="flex flex-row justify-around content-center align-middle p-4 text-center ">
           <legend className={styles.class_showcase_name}>
-            Describe Yourself...
+            Describe Yourself To The World...
           </legend>
 
           <div className="flex flex-col gap-3">
             <label htmlFor="age">Age</label>
-            <input name="age" type="number" min={0} max={99} required />
+            <input
+              name="age"
+              type="number"
+              min={0}
+              max={99}
+              required
+              defaultValue={classChoice?.age}
+            />
           </div>
+
+          {/* could we have a gender component that sets searchParams  and the image displayed is conditional on the search params?*/}
 
           <div className="flex flex-col gap-3">
             <label htmlFor="gender">Gender</label>
-            <select
-              name="gender"
-              type="text"
-              defaultValue={"Select..."}
-              required
-            >
-              <option disabled>Select...</option>
-              <option value={"female"}>Female</option>
-              <option value={"male"}>Male</option>
-              <option value={"not specified"}>Not Specified</option>
-            </select>
+            {!classChoice.clerk_id ? (
+              <select
+                name="gender"
+                type="text"
+                defaultValue={"Select..."}
+                required
+              >
+                <option disabled>Select...</option>
+                <option value={"female"}>Female</option>
+                <option value={"male"}>Male</option>
+                <option value={"not specified"}>Not Specified</option>
+              </select>
+            ) : (
+              <select
+                name="gender"
+                type="text"
+                defaultValue={classChoice.gender}
+                required
+              >
+                <option value={"female"}>Female</option>
+                <option value={"male"}>Male</option>
+                <option value={"not specified"}>Not Specified</option>
+              </select>
+            )}
           </div>
 
           <div className="flex flex-col gap-3">
@@ -86,6 +80,7 @@ export default function FormSection({
               name="weight"
               type="number"
               required
+              defaultValue={classChoice?.weight}
               placeholder="         kg"
             />
           </div>
@@ -96,6 +91,7 @@ export default function FormSection({
             className="placeholder:italic"
             placeholder="Share the tale of your past and your goals on this earthly plane..."
             name="bio"
+            defaultValue={classChoice?.bio}
             required
           />
         </fieldset>
@@ -103,19 +99,35 @@ export default function FormSection({
 
       <div className={styles.class_card}>
         <h3 className={styles.class_showcase_name}>Class Features</h3>
-        <h4 className={styles.class_showcase_tagline}>
-          {classData[classChoice.class].details.title}
-        </h4>
-        <p className={styles.showcase_list}>
-          {classData[classChoice.class].details.tag1}
-        </p>
-        <p className={styles.showcase_list}>
-          {classData[classChoice.class].details.tag2}
-        </p>
+        {!classChoice.clerk_id ? (
+          <>
+            <h4 className={styles.class_showcase_tagline}>
+              {classData[classChoice.class].details.title}
+            </h4>
+            <p className={styles.showcase_list}>
+              {classData[classChoice.class].details.tag1}
+            </p>
+            <p className={styles.showcase_list}>
+              {classData[classChoice.class].details.tag2}
+            </p>
+          </>
+        ) : (
+          <>
+            <h4 className={styles.class_showcase_tagline}>
+              {classData[classChoice.class_name].details.title}
+            </h4>
+            <p className={styles.showcase_list}>
+              {classData[classChoice.class_name].details.tag1}
+            </p>
+            <p className={styles.showcase_list}>
+              {classData[classChoice.class_name].details.tag2}
+            </p>
+          </>
+        )}
       </div>
 
       <button type="submit" className={styles.btn_primary}>
-        Continue
+        {!classChoice.clerk_id ? <p>Continue</p> : <p>Complete Edit</p>}
         <svg className="cl-buttonArrowIcon self-center h-2">
           <path
             className="self-center"
