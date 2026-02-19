@@ -9,6 +9,17 @@ import BarbarianDetails from "@/components/ClassDetails/BarbarianDetails";
 import styles from "@/app/choose-class/choose-class.module.css";
 import { classData } from "@/lib/mockData";
 
+export const metadata = {
+  title: "Dumbbells and Dragons",
+  description:
+    "Dumbbells & Dragon transforms workouts into epic quests. Pick your hero, choose your class, and start training. Take on your workout bravely, like a true champion and gain experience, strength, and glory in Dumbbells & Dragons.",
+  openGraph: {
+    title: "Workouts | Dumbbells & Dragon",
+    description:
+      "A fantasy fitness quest inspired by Dungeons & Dragons. Train hard and unlock your true power.",
+  },
+};
+
 export default async function LandingPage({ searchParams }) {
   const classChoice = await searchParams;
 
@@ -412,7 +423,7 @@ export default async function LandingPage({ searchParams }) {
               <h4 className="footer-heading">Company</h4>
               <ul className="footer-links">
                 <li>
-                  <Link href="#">About</Link>
+                  <Link href="/about">About</Link>
                 </li>
                 <li>
                   <Link href="#">Blog</Link>
@@ -426,13 +437,13 @@ export default async function LandingPage({ searchParams }) {
               <h4 className="footer-heading">Legal</h4>
               <ul className="footer-links">
                 <li>
-                  <Link href="#">Privacy</Link>
+                  <Link href="/privacy">Privacy</Link>
                 </li>
                 <li>
-                  <Link href="#">Terms</Link>
+                  <Link href="/terms">Terms</Link>
                 </li>
                 <li>
-                  <Link href="#">Contact</Link>
+                  <Link href="/contact">Contact</Link>
                 </li>
               </ul>
             </div>
