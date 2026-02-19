@@ -10,7 +10,7 @@ import UserPosts from "@/components/SocialPost/UserPosts";
 export const metadata = {
   title: "User Profile | Dumbbells & Dragon",
   description:
-    "Channel your inner Wizard, Mage, Barbarian ... you name it, we got it! Dumbbells & Dragon allows you to live your fitness character fantasy. Unique abilities, workout styles, and progression paths await.",
+    "Channel your inner Barbarian, Rogue, Paladin... you name it, we got it! Dumbbells & Dragon allows you to live your fitness character fantasy. Unique abilities, workout styles, and progression paths await.",
   title: "User Profile | Dumbbells & Dragon",
   description:
     "A fantasy fitness quest inspired by Dungeons & Dragons. Train hard and unlock your true power.",
@@ -36,19 +36,14 @@ WHERE dd_users.username = $1
       [profile],
     )
   ).rows;
-  console.log(userPostQuery);
 
-  // if (userPostQuery?.name.length === 0) {
-  //   notFound();
-  // }
-  // if (profile === user.username) {
-  //   redirect(`/my-character/${user.username}`);
-  // }
+  if (userPostQuery?.length === 0) {
+    notFound();
+  }
 
-  const formatter = new Intl.DateTimeFormat(`en-UK`, {
-    hour: `2-digit`,
-    minute: `2-digit`,
-  });
+  if (profile === user.username) {
+    redirect(`/my-character/${user.id}`);
+  }
 
   return (
     <>
@@ -71,11 +66,7 @@ WHERE dd_users.username = $1
               <HeroSection userQuery={userPostQuery[0]} styles={styles} />
               {/* import an aside with the stats data */}
               <StatsAside userQuery={userPostQuery[0]} styles={styles} />
-              <UserPosts
-                styles={styles}
-                userPostQuery={userPostQuery}
-                formatter={formatter}
-              />
+              <UserPosts styles={styles} userPostQuery={userPostQuery} />
             </section>
 
             {/* section with user posts */}

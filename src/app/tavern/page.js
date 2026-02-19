@@ -11,7 +11,7 @@ import UserPosts from "@/components/SocialPost/UserPosts";
 export const metadata = {
   title: "Tavern | Dumbbells & Dragon",
   description:
-    "Channel your inner Wizard, Mage, Barbarian ... you name it, we got it! Dumbbells & Dragon allows you to live your fitness character fantasy. Unique abilities, workout styles, and progression paths await.",
+    "Channel your inner Barbarian, Rogue, Paladin... you name it, we got it! Dumbbells & Dragon allows you to live your fitness character fantasy. Unique abilities, workout styles, and progression paths await.",
   title: "Tavern | Dumbbells & Dragon",
   description:
     "A fantasy fitness quest inspired by Dungeons & Dragons. Train hard and unlock your true power.",
@@ -76,12 +76,11 @@ JOIN dd_post ON dd_users.clerk_id = dd_post.user_id_fk
             />
             <div className="h-10"></div>
             <UserPosts
+              currentUsername={user.username}
               styles={styles}
               userPostQuery={userPostQuery}
               formatter={formatter}
             />
-
-            <section className={styles.charSheet}></section>
           </div>
         </section>
       </div>

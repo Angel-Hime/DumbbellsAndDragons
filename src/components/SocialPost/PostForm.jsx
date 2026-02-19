@@ -9,6 +9,18 @@ export default async function PostForm({
   username,
   styles,
 }) {
+  let formattedDate = null;
+  let formattedTime = null;
+
+  if (prefill) {
+    formattedDate = prefill.post_created.toISOString().split("T")[0];
+    const formatter = new Intl.DateTimeFormat(`en-UK`, {
+      hour: `2-digit`,
+      minute: `2-digit`,
+    });
+    formattedTime = formatter.format(prefill.post_date);
+  }
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
@@ -44,7 +56,7 @@ export default async function PostForm({
               <input
                 name="title"
                 placeholder="Name your tale..."
-                defaultValue={prefill?.post_content}
+                defaultValue={prefill?.post_title}
               />
 
               <label htmlFor="content"> Post Content: </label>
@@ -62,14 +74,24 @@ export default async function PostForm({
                 justifyContent: "flex-end",
               }}
             >
-              <button type="submit" className={`${styles.btn_primary} green`}>
-                Confirm
-              </button>
+              <div className="w-100 flex flex-row gap-10">
+                {prefill ? (
+                  <DeleteDialog
+                    styles={styles}
+                    post={prefill}
+                    username={username}
+                  />
+                ) : null}
+
+                <button
+                  type="submit"
+                  className={`${styles.btn_primary} self-end`}
+                >
+                  Update my tale!
+                </button>
+              </div>
             </div>
           </form>
-          {prefill ? (
-            <DeleteDialog styles={styles} post={prefill} username={username} />
-          ) : null}
 
           <Dialog.Close asChild>
             <button className={styles.btn_secondary} aria-label="Close">
