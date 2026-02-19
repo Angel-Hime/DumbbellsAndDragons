@@ -15,6 +15,32 @@ import "./about.css";
 import NavBar from "@/components/Navigation/NavBar";
 import { currentUser } from "@clerk/nextjs/server";
 
+export const metadata = {
+  title: "About Us | Dumbbells & Dragon",
+  description:
+    "Learn more about Dumbbells & Dragon, the gamified fitness RPG that turns your workouts into epic quests. Discover the story behind the UK-based fitness RPG sensation that combines Dungeons & Dragons adventure with real-world workouts.",
+  keywords: [
+    "Dumbbells & Dragon",
+    "about us",
+    "fitness RPG",
+    "D&D workouts",
+    "UK fitness app",
+  ],
+  authors: [{ name: "Dumbbells & Dragon Team" }],
+  creator: "Dumbbells & Dragon",
+  publisher: "Dumbbells & Dragon Studios",
+  openGraph: {
+    type: "website",
+    url: "https://dumbbells-and-dragons.vercel.app/about",
+    title: "About Us | Dumbbells & Dragon",
+    description:
+      "Learn how Dumbbells & Dragon blends RPG adventure with fitness challenges to make your workouts fun and immersive.",
+    siteName: "Dumbbells & Dragon",
+    images: [],
+  },
+  robots: { index: true, follow: true },
+};
+
 export default function AboutPage() {
   return (
     <div className="page-wrapper">
