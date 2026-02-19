@@ -1,4 +1,4 @@
-import { Link } from "next/link";
+import Link from "next/link";
 import "./dashboard.css";
 import NavBar from "@/components/Navigation/NavBar";
 
