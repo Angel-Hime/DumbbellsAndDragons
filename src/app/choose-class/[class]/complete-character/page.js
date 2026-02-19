@@ -28,7 +28,7 @@ export default async function CompleteCharacter({ params }) {
     ])
   ).rows[0];
 
-  console.log(classQuery);
+  console.log(classQuery.id);
 
   async function handleCompleteCharacterForm(formData) {
     "use server";
@@ -41,21 +41,20 @@ export default async function CompleteCharacter({ params }) {
       age,
       weight,
       bio,
-      dbClasses[0].id,
+      classQuery.id,
     );
 
     // insert user row
     db.query(
       `INSERT INTO dd_users (clerk_id, username, gender, age, weight, bio, classes_id_fk) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-      [user?.id, user?.username, gender, age, weight, bio, dbClasses[0].id],
+      [user?.id, user?.username, gender, age, weight, bio, classQuery.id],
     );
 
-    // insert progression row
+    // // insert progression row
     db.query(`INSERT INTO dd_progression (user_id_fk) VALUES ($1)`, [user?.id]);
 
     console.log("Success");
 
-    revalidatePath(`/dashboard`);
     redirect(`/dashboard`);
   }
   return (
