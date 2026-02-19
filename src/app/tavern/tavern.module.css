@@ -70,6 +70,7 @@
 }
 
 .user_form {
+  margin: 1rem;
   padding: 1rem;
   background: rgba(30, 41, 59, 0.5);
   backdrop-filter: blur(12px);
@@ -222,6 +223,36 @@
   gap: 1.5em;
   &:hover {
     background: linear-gradient(to left, #16bb84, #059669);
+  }
+}
+
+/* delete */
+
+.delete_overlay {
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  inset: 0;
+  animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn_delete {
+  align-self: flex-start;
+  width: fit-content;
+  margin: 1rem 0;
+  padding: 0.5rem 2rem;
+  background: linear-gradient(to right, #820d0d, #913636);
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 1.5em;
+  &:hover {
+    background: linear-gradient(to left, #913636, #820d0d);
   }
 }
 /* Class=====================selector */
