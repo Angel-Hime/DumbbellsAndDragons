@@ -1,4 +1,4 @@
-import { Link } from "lucide-react";
+import { Link } from "next/link";
 import "./dashboard.css";
 import NavBar from "@/components/Navigation/NavBar";
 
@@ -13,46 +13,40 @@ export const metadata = {
   },
 };
 
-export default async function DashboardPage() {
-  const res = await fetch("http://localhost:3000/api/dashboard/today-workout", {
-    cache: "no-store",
-  });
-
-  const data = await res.json();
-
+export default function DashboardPage() {
   return (
     <>
       <section className="dashboard">
         <NavBar />
         <div className="dashboard-title-div">
-          <h2>Welcome back, {data.username}! 💪</h2>
+          <h2>Welcome back, Bob! 💪</h2>
           <h3>Ready to continue your quest?</h3>
         </div>
 
         <section className="sections-container">
           <section className="class-stats-section">
             <div className="stats-title">
-              <h3>🪓 {data.username}</h3>
-              <p>{data.classInfo}</p>
+              <h3>🪓 Bob the Barbarian</h3>
+              <p>Barbarian - Powerbuilding Path</p>
             </div>
 
-            {/*<div className="xp-div">
+            <div className="xp-div">
               <p>XP Progress</p>
               <p className="xp-number">500/1200</p>
-            </div> */}
+            </div>
 
             <div className="individual-stats">
               <div className="character-stat">
-                <p className="stat-type">💪 {data.stats[0].name}</p>
-                <p className="stat-value">{data.stats[0].value}</p>
+                <p className="stat-type">💪 Strength</p>
+                <p className="stat-value">88</p>
               </div>
               <div className="character-stat">
-                <p className="stat-type">🏃 {data.stats[1].name}</p>
-                <p className="stat-value">{data.stats[1].value}</p>
+                <p className="stat-type">🏃 Stamina</p>
+                <p className="stat-value">18</p>
               </div>
               <div className="character-stat">
-                <p className="stat-type">❤️ {data.stats[2].name}</p>
-                <p className="stat-value">{data.stats[2].value}</p>
+                <p className="stat-type">❤️ Vitality</p>
+                <p className="stat-value">200</p>
               </div>
             </div>
           </section>
