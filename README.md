@@ -233,6 +233,7 @@ Each week increases weight/volume:
 - Implemented metadata for SEO optimization
 - Ensured data integrity and relationships
 - Set up Clerk Auth
+- Lead on project slideshow creation 
 
 **Dylan** - Full-Stack Developer & UI/UX
 - Built and styled the dashboard page
@@ -364,3 +365,9 @@ Mostly due to complex SQL queries taking longer than anticipated to get working,
 - Technical issues caused slowed progress at multiple points during the project, could have re-distributed better from my end when these were happening
 - Describing errors or bugs you encountered while completing your assignment
 - We had multiple issues with vercel deployment, stemming from fetch issues and client/server component structuring
+
+**Nene**
+- Working collaboratively under the agile methodology was difficult at first as the pace of the project was very much break-neck for the amount of things we wanted to accomplish
+- The better part of day 3 was a loss for me after system issues caused a blue screen of death to rear its head and take all my coding for that day with - this put me on the back foot on day 4 but I caught up nonetheless
+- Working with familiar tools such as Trello, DrawSQL, Supabase, Clerk and Next.js helped greatly in keeping me engaged - I did have to revise many-to-many DB relationships which also ate into time but was much needed
+- On a more personal note, I can say that it was probably one of the most challenging things I have done in recent history. The entire course culminating in this project was a fantastic end to a mad ride and I could not have asked for a better team than the one we forged together. Smooth communciation, minimal conflict, well-organised project management, on mission and overall a professionally executed project. I am proud of what we have achieved!
