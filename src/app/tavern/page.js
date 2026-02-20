@@ -24,10 +24,8 @@ export default async function Tavern() {
   // user and post query here
   const userPostQuery = (
     await db.query(
-      `SELECT dd_users.*, dd_classes.*, dd_progression.*, dd_post.* 
+      `SELECT dd_users.*, dd_post.* 
 FROM dd_users 
-JOIN dd_classes ON dd_users.classes_id_fk = dd_classes.id
-JOIN dd_progression ON dd_users.clerk_id = dd_progression.user_id_fk
 JOIN dd_post ON dd_users.clerk_id = dd_post.user_id_fk
 `,
     )

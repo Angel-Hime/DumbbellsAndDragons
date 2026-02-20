@@ -1,6 +1,8 @@
 import Link from "next/link";
 import "./dashboard.css";
 import NavBar from "@/components/Navigation/NavBar";
+import { db } from "@/utils/dbConnection";
+import { currentUser } from "@clerk/nextjs/server";
 
 export const metadata = {
   title: "Dashboard | Dumbbells & Dragon",
@@ -13,40 +15,57 @@ export const metadata = {
   },
 };
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const user = await currentUser();
+  const { id } = await currentUser();
+
+  console.log(id);
+  const userPostQuery = (
+    await db.query(
+      `SELECT dd_users.*, dd_classes.*, dd_progression.* 
+FROM dd_users 
+RIGHT JOIN dd_classes ON dd_users.classes_id_fk = dd_classes.id
+LEFT JOIN dd_progression ON dd_users.clerk_id = dd_progression.user_id_fk
+WHERE clerk_id = $1
+  `,
+      [id],
+    )
+  ).rows[0];
+  console.log(userPostQuery);
+
   return (
     <>
       <section className="dashboard">
         <NavBar />
         <div className="dashboard-title-div">
-          <h2>Welcome back, Bob! 💪</h2>
+          <h2>Welcome back, {user?.username}! 💪</h2>
           <h3>Ready to continue your quest?</h3>
         </div>
 
         <section className="sections-container">
           <section className="class-stats-section">
             <div className="stats-title">
-              <h3>🪓 Bob the Barbarian</h3>
-              <p>Barbarian - Powerbuilding Path</p>
+              <h3>{user?.username}</h3>
+              <p>{userPostQuery.class_name} - Powerbuilding Path</p>
             </div>
 
             <div className="xp-div">
               <p>XP Progress</p>
-              <p className="xp-number">500/1200</p>
+              <p className="xp-number">{userPostQuery?.total_xp} xp</p>
             </div>
 
             <div className="individual-stats">
               <div className="character-stat">
-                <p className="stat-type">💪 Strength</p>
-                <p className="stat-value">88</p>
+                <p className="stat-type">💪 {userPostQuery?.stat_one[0]}</p>
+                <p className="stat-value">{userPostQuery?.stat_one[1]}</p>
               </div>
               <div className="character-stat">
-                <p className="stat-type">🏃 Stamina</p>
-                <p className="stat-value">18</p>
+                <p className="stat-type">🏃 {userPostQuery?.stat_two[0]}</p>
+                <p className="stat-value">{userPostQuery?.stat_two[1]}</p>
               </div>
               <div className="character-stat">
-                <p className="stat-type">❤️ Vitality</p>
-                <p className="stat-value">200</p>
+                <p className="stat-type">❤️ {userPostQuery?.stat_three[0]}</p>
+                <p className="stat-value">{userPostQuery?.stat_three[1]}</p>
               </div>
             </div>
           </section>
@@ -65,7 +84,7 @@ export default function DashboardPage() {
               <p className="workout-stat-type">ACHIEVEMENT(S)</p>
             </div>
             <div className="workout-stat">
-              <p className="unit">3</p>
+              <p className="unit">{userPostQuery?.level}</p>
               <p className="workout-stat-type">LEVEL</p>
             </div>
           </section>
