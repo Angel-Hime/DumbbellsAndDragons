@@ -1,4 +1,4 @@
-import styles from "./tavern.module.css";
+import styles from "./gh.module.css";
 import { currentUser } from "@clerk/nextjs/server";
 import NavBar from "@/components/Navigation/NavBar";
 import { db } from "@/utils/dbConnection";
@@ -17,7 +17,11 @@ export const metadata = {
     "A fantasy fitness quest inspired by Dungeons & Dragons. Train hard and unlock your true power.",
 };
 
-export default async function Tavern() {
+export default async function GuildHall() {
+  // have a button for Create Guild - form for creating the guild (I might have to have the name input also be a search bar to ensure unique name)
+  // have a button for Join Guild - search function for guild name
+  // -- Both will load a modal
+
   const user = await currentUser();
   console.log(user.id);
 

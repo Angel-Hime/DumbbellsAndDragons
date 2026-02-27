@@ -38,7 +38,7 @@ export default function NavDropdownMenu() {
             asChild
             className="px-3 py-2 hover:bg-white/10 transition-colors rounded-md"
           >
-            <Link href={`/tavern`}>Tavern</Link>
+            <Link href={`/guildhall`}>Tavern</Link>
           </DropdownMenu.Item>
           <DropdownMenu.Item
             asChild
